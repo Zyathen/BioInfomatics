@@ -52,9 +52,10 @@ public class dnaCounter {
             File outputFile = new File("output");
             FileWriter fileWriter = new FileWriter(outputFile);
 
-            //Writing to the file
-            for (Integer count : counter.values()){
-                fileWriter.write(count.toString() + " ");
+            char[] bases = {'A', 'C', 'G', 'T'};
+            //Writing to the file in order A,C,G,T
+            for(Character base : bases){
+                fileWriter.write((counter.get(base)).toString() + " ");
             }
             fileWriter.close();
         } catch (IOException e) {
