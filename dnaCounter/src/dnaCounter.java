@@ -26,7 +26,7 @@ public class dnaCounter {
                 String sequence = fileReader.nextLine();
 
                 //Throws an error if it includes anything but nucelotides
-                Boolean matchFound = Pattern.matches("/^[ATGC]+$/", sequence);
+                Boolean matchFound = Pattern.matches("^[ATGC]+$", sequence);
                 if (matchFound == false){
                     System.out.println("Sequence includes other characters");
                 }
