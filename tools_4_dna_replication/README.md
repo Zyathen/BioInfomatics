@@ -1,18 +1,20 @@
-## Getting Started
+# Tools for DNA Replication
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+## Project Description
 
-## Folder Structure
+### Part 1
 
-The workspace contains two folders by default, where:
+Method to find a short string within a longer string, using algorithms to minimize the run time and optimize the search.
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+#### Structure of the Files
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+Input File
+The first line contains the query.
+The second line contains the text that the query is searched against.
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+Output File
+Contains a list of indexes where the query match starts, where indexing starts at 0.
 
-## Dependency Management
+### Part 2
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+The method finds the location within the genome that minmizes the skew.
