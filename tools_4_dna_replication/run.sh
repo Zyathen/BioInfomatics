@@ -1,2 +1,2 @@
 #!/bin/sh
-java -cp /autograder/submission toolsDNARep
+java -cp /autograder/submission ZAlgorithm

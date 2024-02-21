@@ -1,2 +1,2 @@
 #!/bin/sh
-javac toolsDNARep.java
+javac ZAlgorithm.java
