@@ -59,8 +59,6 @@ public class skewMinimizer {
         int cCounter = 0;
         int gCounter = 0; 
 
-        boolean minInit = false;
-
         int minValue = 0; 
         int skew;
 
@@ -77,12 +75,8 @@ public class skewMinimizer {
                 skew = (gCounter - cCounter);
             }
 
-            if(minInit == false){
-                minValue = skew;
-            }
 
             if(skew < minValue){
-                minInit = true;
                 minValue = skew;
                 indices.removeAll(indices);
                 indices.add(i + 1);
