@@ -1,18 +1,18 @@
-## Getting Started
+# Skew Minimizer Identification
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Find the location in the sequence of DNA (ie. the genome) that minimizes the skew. If there are multiple minimum values, return all the positions where the skew is minimized.
 
-## Folder Structure
+## Background Information about Skews in Genomes
 
-The workspace contains two folders by default, where:
+DNA is composed of a random string of 4 nucelotides (A, T, G, and C) which are expressed in equal amounts in the DNA. However, during the replication process of DNA there are mutations that occur that can change this. An example of this is the hydrolytic deamination of cytosine in the leading strand, this causes on one side of the origin of replication to have more guanine (G) and the other side to have more cysteine (C).
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+This difference in prevalance of these two nucleotides, allows researchers to determine the point of origin through the following formula:
+(G - C) / (G + C).
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+## Input File
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+Contains a DNA sequence across multiple lines
 
-## Dependency Management
+## Output File
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+Contains the index/indices where the skew is minimized and possible location for the point of replication.
