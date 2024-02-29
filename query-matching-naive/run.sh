@@ -1,2 +1,2 @@
 #!/bin/sh
-java -cp /autograder/submission ZAlgorithm
+java -cp /autograder/submission stringComparator

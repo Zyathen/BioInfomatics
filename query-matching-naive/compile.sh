@@ -1,2 +1,2 @@
 #!/bin/sh
-javac ZAlgorithm.java
+javac stringComparator.java
