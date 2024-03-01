@@ -51,20 +51,33 @@ public class skewMinimizer {
         }
     }
 
+    // Calculates the indices where there is a minimum
     public static ArrayList<Integer> findMins(String sequence){
         ArrayList<Integer> indices = new ArrayList<Integer>();
 
         char sequenceChars[] = sequence.toCharArray();
 
         int counter = 0;
+
+        if(sequenceChars[0] == 'C'){
+            counter--;
+        } else if(sequenceChars[0] == 'G'){
+            counter++;
+        }
+    
         int minValue = 0;
 
         for (int i = 0; i < sequenceChars.length; i++){
+
             // If there is a C, minus, if there is a G add, else do nothing
             if(sequenceChars[i] == 'C'){
                 counter--;
             } else if(sequenceChars[i] == 'G'){
                 counter++;
+            }
+
+            if(i == 0){
+                minValue = counter;
             }
 
             // If the skew is less than curr min value, replace the min with the counter
