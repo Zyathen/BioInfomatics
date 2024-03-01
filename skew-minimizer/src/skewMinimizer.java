@@ -56,31 +56,24 @@ public class skewMinimizer {
 
         char sequenceChars[] = sequence.toCharArray();
 
-        int cCounter = 0;
-        int gCounter = 0; 
-
-        int minValue = 0; 
-        int skew;
+        int counter = 0;
+        int minValue = 0;
 
         for (int i = 0; i < sequenceChars.length; i++){
+            // If there is a C, minus, if there is a G add, else do nothing
             if(sequenceChars[i] == 'C'){
-                cCounter++;
+                counter--;
             } else if(sequenceChars[i] == 'G'){
-                gCounter++;
+                counter++;
             }
 
-            if(gCounter == 0 && cCounter == 0){
-                skew = 0;
-            } else {
-                skew = (gCounter - cCounter);
-            }
-
-
-            if(skew < minValue){
-                minValue = skew;
+            // If the skew is less than curr min value, replace the min with the counter
+            if(counter < minValue){
+                minValue = counter;
                 indices.removeAll(indices);
                 indices.add(i + 1);
-            } else if (skew == minValue){
+            // If the minimum value is still the counter, add to the indices
+            } else if (counter == minValue){
                 indices.add(i + 1);
             } 
         }
