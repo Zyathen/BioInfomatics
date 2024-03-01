@@ -56,8 +56,10 @@ public class skewMinimizer {
         ArrayList<Integer> indices = new ArrayList<Integer>();
 
         char sequenceChars[] = sequence.toCharArray();
-
+        // Calculates the skew for the characters that have been passed
         int counter = 0;
+        // Stores the minimum value of all the characters in the sequence
+        int minValue = 0;
 
         if(sequenceChars[0] == 'C'){
             counter--;
@@ -65,8 +67,6 @@ public class skewMinimizer {
             counter++;
         }
     
-        int minValue = 0;
-
         for (int i = 0; i < sequenceChars.length; i++){
 
             // If there is a C, minus, if there is a G add, else do nothing
@@ -76,6 +76,7 @@ public class skewMinimizer {
                 counter++;
             }
 
+            // Determine the minValue with the first character
             if(i == 0){
                 minValue = counter;
             }
@@ -85,6 +86,7 @@ public class skewMinimizer {
                 minValue = counter;
                 indices.removeAll(indices);
                 indices.add(i + 1);
+
             // If the minimum value is still the counter, add to the indices
             } else if (counter == minValue){
                 indices.add(i + 1);
