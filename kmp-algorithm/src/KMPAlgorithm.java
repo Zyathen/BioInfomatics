@@ -6,7 +6,6 @@ public class KMPAlgorithm {
     public static void main(String[] args) throws Exception {
         // Read the query and text from the input file
         String input = readInput();
-        System.out.println(input);
 
         int spVals[] = generateSpVals(input);
 
@@ -56,12 +55,33 @@ public class KMPAlgorithm {
 
     // Searches through the text to find matches and returns the indices of these matches
     public static int[] generateSpVals(String text){
-        int spVals[] = new int[text.length()];
+        int TEXT_LEN = text.length();
+        int spVals[] = new int[TEXT_LEN];
+
+        // The first index of the spVals is blank, nothing to compare it to
         spVals[0] = 0;
+        // Keeps track of the beginning
+        int pat = 0;
+        //Goes through the whole text comparing to the beginning of text
+        int i = 1;
 
-        while(i < )
-
-
+        // Loops through the text
+        while(i < TEXT_LEN){
+            // If there is a match add to the spVals
+            if(text.charAt(i) == text.charAt(pat)){
+                pat++;
+                spVals[i] = pat;
+                i++;
+            } else {
+                // No match copy the beginning/ subtract down
+                if(pat != 0){
+                    pat = spVals[pat - 1];
+                } else {
+                    spVals[i] = 0;
+                    i++;
+                }
+            }
+        }
 
         return spVals;
     }
