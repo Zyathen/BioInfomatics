@@ -9,8 +9,16 @@ public class stringComparator {
         String query = inputs[0];
         String text = inputs[1];
 
-        // Employes the Z Algorithm to determine matches
+        // Calculate runtime (starting timer when getting matches)
+        long startTime = System.nanoTime();
+
+        // Employes the naive approach to determine matches
         ArrayList<Integer> matches = compareString(text, query);
+
+        // Calculating total runtime, printing out the total
+        long endTime   = System.nanoTime();
+        long totalTime = endTime - startTime;
+        System.out.println(totalTime);
 
         // Write the output file of the indices in the string of matches
         createOutput(matches);
@@ -73,7 +81,7 @@ public class stringComparator {
         int queryLength = query.length();
 
         // Goes through the text up until there cannot not be the query due to not enough chars
-        for (int i = 0; i < (textLength + 1) - queryLength; i++){
+        for (int i = 0; i < textLength - 1; i++){
             int queryCounter = 0;
             int textCounter = i;
             // Until the end of the query and while the two strands are matching

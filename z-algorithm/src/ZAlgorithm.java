@@ -6,12 +6,21 @@ public class ZAlgorithm {
     public static void main(String[] args) throws Exception {
         // Read the query and text from the input file
         String inputs[] = readInput();
-        System.out.println(inputs);
         String query = inputs[0];
         String text = inputs[1];
 
+        String concatString = (query + "$" + text);
+        
+        // Calculate runtime (starting timer when getting matches)
+        long startTime = System.nanoTime();
+
         // Employes the Z Algorithm to determine matches
-        ArrayList<Integer> matches = getZValues((query + "$" + text).toCharArray(), query.length());
+        ArrayList<Integer> matches = getZValues(concatString, query.length());
+
+        // Calculating total runtime, printing out the total
+        long endTime   = System.nanoTime();
+        long totalTime = endTime - startTime;
+        System.out.println(totalTime);
 
         // Write the output file of the indices in the string of matches
         createOutput(matches);
@@ -63,8 +72,10 @@ public class ZAlgorithm {
     }
 
     // Searches through the text to find matches and returns the indices of these matches
-    public static ArrayList<Integer> getZValues(char concatString[], int queryLen){
+    public static ArrayList<Integer> getZValues(String conStr, int queryLen){
         ArrayList<Integer> indices = new ArrayList<Integer>();
+
+        char concatString[] = conStr.toCharArray();
 
         int CONCAT_LENGTH = concatString.length;
 
@@ -72,9 +83,8 @@ public class ZAlgorithm {
         // The first index of the zArray is blank, nothing to compare it to
         zArray[0] = 0;
 
-        int R = 0, L = 0;
-
-        for(int i = 1; i < CONCAT_LENGTH; i++){
+        for(int i = 1; i < CONCAT_LENGTH; ++i){
+            int R = 0, L = 0;
             // When the index is R index is greater than the curr index there has been matches
             if(i > R){
                 //If there are no matches, then we start with the naive way
@@ -89,11 +99,6 @@ public class ZAlgorithm {
                 zArray[i] = R - L;
                 R--;
 
-                // Adding the index if the match is the correct length
-                if (checkMatch(queryLen, zArray[i]) == true){
-                    indices.add(i);
-                }
-                
             // There have been matches
             } else {
                 int k = i - L;
@@ -103,10 +108,6 @@ public class ZAlgorithm {
                 if(zArray[k] < (R - i + 1)){
                     zArray[i] = zArray[k];
 
-                     // Adding the index if the match is the correct length
-                    if (checkMatch(queryLen, zArray[i]) == true){
-                        indices.add(i);
-                    }
                 // Case 2: Start matching past the interval, zArray[k] > (R-i+1)
                 } else {
                     L = i;
@@ -117,21 +118,18 @@ public class ZAlgorithm {
                     // Recording the number of matches
                     zArray[i] = R - L;
                     R--;
-
-                    // Adding the index if the match is the correct length
-                    if (checkMatch(queryLen, zArray[i]) == true){
-                        indices.add(i);
-                    }
                 }
             }
         }
+
+        // Adding the index if the match is the correct length
+        for (int i = 0; i < zArray.length; i++){
+            if(zArray[i] == queryLen){
+                indices.add(i - queryLen - 1);
+            }        
+        }
+
         return indices;
     }
 
-    public static boolean checkMatch(int length, int zValue){
-        if(length == zValue){
-            return true;
-        }
-        return false;
-    }
 }
