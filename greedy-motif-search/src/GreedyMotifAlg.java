@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.*;
 import java.text.*;
 
-public class GreedyMotifAlg {
+public class greedyMotifAlg {
     public static void main(String[] args) throws Exception {
         // Read the input file
         ArrayList<String> inputs = readInput();

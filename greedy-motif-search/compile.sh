@@ -1,2 +1,2 @@
 #!/bin/sh
-javac greedyMotifAlg.java
+javac GreedyMotifAlg.java
