@@ -1,2 +1,2 @@
 #!/bin/sh
-java -cp /autograder/submission GreedyMotifAlg
+java -cp /autograder/submission greedyMotifAlg
