@@ -1,2 +1,2 @@
 #!/bin/sh
-javac ConstructSuffixTree.java
+javac SuffixTree.java

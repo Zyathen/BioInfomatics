@@ -1,2 +1,2 @@
 #!/bin/sh
-java -cp /autograder/submission ConstructSuffixTree
+java -cp /autograder/submission SuffixTree
