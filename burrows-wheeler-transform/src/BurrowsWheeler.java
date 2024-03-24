@@ -1,10 +1,6 @@
 import java.io.*;
 import java.util.*;
-
-import org.w3c.dom.Node;
-
 import java.text.*;
-import java.lang.*;
 
 public class BurrowsWheeler {
     public static void main(String[] args) throws Exception {
@@ -12,7 +8,9 @@ public class BurrowsWheeler {
         String input = readInput();
 
         // Find the string that has been scrambled
-        String output = burrowsWheelerTransform(input);
+        String outputNaive = burrowsWheelerTransformNaive(input);
+
+        //String output = burrowsWheelerTransform(input);
 
         // Create the output file
         createOutput(output);
@@ -53,9 +51,33 @@ public class BurrowsWheeler {
         }
     }
 
-    public static String burrowsWheelerTransform(String input){
-        String output = "";
+    public static String burrowsWheelerTransformNaive(String input){
+        // Input is the last column of the BWT
+    
+        // Create BWT matrix
+        String[] bwt = new String[input.length()];
+        Arrays.fill(bwt, "");
 
-        return output;
+        // Sort the array by the first letter, with $ being the highest
+        for(int i = 0; i < input.length(); i++){
+            // Preappend the input to each string in the bwt array
+            for(int j = 0; j < bwt.length; j++){
+                bwt[j] = input.charAt(j) + bwt[j];
+            }
+
+            // Sort the bwt array
+            Arrays.sort(bwt);
+        }
+
+        int i = 0;
+        while(bwt[i].endsWith("$") != true){
+            i++;
+        }
+    
+        return bwt[i];
     } 
+
+    // public static String burrowsWheelerTransform(String input){
+    //     return output;
+    // }
 }
