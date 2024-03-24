@@ -8,7 +8,7 @@ public class BurrowsWheeler {
         String input = readInput();
 
         // Find the string that has been scrambled
-        String outputNaive = burrowsWheelerTransformNaive(input);
+        String output = burrowsWheelerTransformNaive(input);
 
         //String output = burrowsWheelerTransform(input);
 
